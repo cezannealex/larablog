@@ -1,4 +1,10 @@
-@extends('admin.layouts.app') @section('content')
+@extends('admin.layouts.app')
+
+@section('extraStyle')
+
+@endsection('extraStyle')
+
+@section('content')
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -39,12 +45,23 @@
                     </div>
                     <div class="form-group">
                         <label for="category">Select a Category</label>
-                        <input type="number" name="category_id" id="category" class="form-control" value="{{$article->category_id}}">
+                        <select name="category_id" id="category" class="form-control">
+                            @foreach($categories as $category)
+                                @if($article->category_id == $category->id)
+                                    <option selected value="{{$category->id}}">{{$category->name}}</option>
+                                @else
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                @endif
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="content">Content</label>
-                        <textarea name="content" id="content" cols="5" rows="5" class="form-control">
+                        {{--  <textarea name="content" id="content" cols="5" rows="5" class="form-control">
                             {{$article->content}}
+                        </textarea>  --}}
+                        <textarea id="content" name="content" rows="10" cols="80">
+                                {{$article->content}}
                         </textarea>
                     </div>
                     <div class="form-group">
@@ -65,4 +82,16 @@
     <!-- /.content -->
 </div>
 
+@endsection
+
+@section('extraScript')
+<script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
+<script>
+
+    $(function () {
+        // Replace the <textarea id="editor1"> with a CKEditor
+        // instance, using default configuration.
+        CKEDITOR.replace('content');
+        });
+</script>
 @endsection

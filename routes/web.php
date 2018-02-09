@@ -62,4 +62,20 @@ Route::get('/admin/article/delete/{id}', [
     'as' => 'admin.article.delete'
 ]);
 
+//route for CategoryController
+
+Route::get('/admin/category', [
+    'uses' => 'CategoryController@index',
+    'as' => 'admin.category.index'
+]);
+
+Route::get('/admin/category/create', [
+    'uses' => 'CategoryController@create',
+    'as' => 'admin.category.create'
+]);
+Route::post('/admin/category/store', [
+    'uses' => 'CategoryController@store',
+    'as'=> 'admin.category.store'
+]);
+
 

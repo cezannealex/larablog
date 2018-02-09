@@ -32,7 +32,7 @@
               <tr>
                 <td><img src="/uploads/articles/{{$article->image}}" style="width: 200px"></td>
                 <td><a href="{{ route('admin.article.show', ['id' => $article->id]) }}">{{$article->title}}</a></td>
-                <td>{{$article->category_id}}</td>
+                <td>{{$article->category->name}}</td>
                 <td><a href="{{ route('admin.article.edit', ['id' => $article->id]) }}" class="btn btn-xs btn-primary">Edit</a></td>
                 <td><a href="{{ route('admin.article.delete', ['id' => $article->id]) }}" class="btn btn-xs btn-danger">Delete</a></td>
               </tr>

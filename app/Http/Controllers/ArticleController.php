@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Article;
+use App\Category;
 
 class ArticleController extends Controller
 {
@@ -16,6 +17,7 @@ class ArticleController extends Controller
     {
         //
         $articles = Article::all();
+
         return view('admin.article.index', compact('articles'));
     }
 
@@ -27,7 +29,8 @@ class ArticleController extends Controller
     public function create()
     {
         //
-        return view('admin.article.create');
+        $categories = Category::all();
+        return view('admin.article.create', compact('categories'));
     }
 
     /**
@@ -82,7 +85,8 @@ class ArticleController extends Controller
     {
         //
         $article = Article::find($id);
-        return view('admin.article.edit', compact('article'));
+        $categories = Category::all();
+        return view('admin.article.edit', compact('article', 'categories'));
     }
 
     /**
