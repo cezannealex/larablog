@@ -37,8 +37,8 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="{{ route('admin.article.index') }}"><i class="fa fa-circle-o"></i> List All Articles</a></li>
-            <li><a href="{{ route('admin.article.create') }}"><i class="fa fa-circle-o"></i> Create New Article</a></li>  --}}
-            {{--  <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+            <li><a href="{{ route('admin.article.create') }}"><i class="fa fa-circle-o"></i> Create New Article</a></li>
+            <li><a href="{{ route('admin.category.index') }}"><i class="fa fa-circle-o"></i> Category</a></li>
           </ul>
         </li>
 

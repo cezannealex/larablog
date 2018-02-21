@@ -17,6 +17,10 @@ Route::get('/', function () {
 
 Route::get('/test', 'TestController@test');
 
+Route::get('/admin', function() {
+    return view('admin.home');
+});
+
 Route::get('/admin/home', function() {
     return view('admin.home');
 });

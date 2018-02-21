@@ -40,6 +40,7 @@
 
           </tbody>
         </table>
+        {{$articles->links()}}
       </div>
       <!-- /.box-body -->
 
