@@ -45,15 +45,15 @@
                     </div>
                     <div class="form-group">
                         <label for="category">Select a Category</label>
-                        <select name="category_id" id="category" class="form-control">
-                            @foreach($categories as $category)
-                                @if($article->category_id == $category->id)
-                                    <option selected value="{{$category->id}}">{{$category->name}}</option>
-                                @else
-                                    <option value="{{$category->id}}">{{$category->name}}</option>
-                                @endif
-                            @endforeach
-                        </select>
+<select name="category_id" id="category" class="form-control">
+    @foreach($categories as $category)
+        @if($article->category_id == $category->id)
+            <option selected value="{{$category->id}}">{{$category->name}}</option>
+        @else
+            <option value="{{$category->id}}">{{$category->name}}</option>
+        @endif
+    @endforeach
+</select>
                     </div>
                     <div class="form-group">
                         <label for="content">Content</label>

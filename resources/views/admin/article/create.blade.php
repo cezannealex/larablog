@@ -38,6 +38,7 @@
                             @endforeach
                         </select>
                     </div>
+
                     <div class="form-group">
                         <label for="content">Content</label>
                         <textarea name="content" id="content" cols="5" rows="5" class="form-control">

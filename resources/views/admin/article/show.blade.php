@@ -21,7 +21,7 @@
         </div>
         <div class="box-body">
                 <img src="/uploads/articles/{{$article->image}}" style="width: 500px;">
-                <h3>Category: {{$article->category->name}}</h3>
+                <h3><b>Category:</b> {{$article->category->name}}</h3>
                 <p>
                     {!! $article->content !!}
                 </p>

@@ -11,6 +11,15 @@ class Article extends Model
         'title', 'content', 'image', 'category_id'
     ];
 
+    /*
+    One to One Relationship
+    Example:
+        - Article1 -> CategoryA
+        - Article2 -> CategoryA
+        - Article3 -> CategoryA
+    One Article belongs to only one Category
+    */
+
     public function category() {
         return $this->belongsTo('App\Category');
     }

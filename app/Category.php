@@ -11,7 +11,16 @@ class Category extends Model
         'name'
     ];
 
-    public function article() {
-        return $this->hasMany('App\Post');
+    /*
+        One-to-Many Relationship
+        Example:
+        CategoryA
+            - Article1
+            - Article2
+            - Article3
+        One Category has many articles
+    */
+    public function articles() {
+        return $this->hasMany('App\Article');
     }
 }

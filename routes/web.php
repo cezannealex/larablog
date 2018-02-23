@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', 'TestController@test');
+// Route::get('/test', 'TestController@test');
 
 Route::get('/admin', function() {
     return view('admin.home');
@@ -77,9 +77,27 @@ Route::get('/admin/category/create', [
     'uses' => 'CategoryController@create',
     'as' => 'admin.category.create'
 ]);
+
 Route::post('/admin/category/store', [
     'uses' => 'CategoryController@store',
     'as'=> 'admin.category.store'
+]);
+
+Route::resource('/test', 'TestController');
+
+Route::get('/admin/category/delete/{id}', [
+    'uses' => 'CategoryController@destroy',
+    'as' => 'admin.category.delete'
+]);
+
+Route::get('/admin/category/edit/{id}', [
+    'uses' => 'CategoryController@edit',
+    'as' => 'admin.category.edit'
+]);
+
+Route::post('/admin/category/update/{id}', [
+    'uses' => 'CategoryController@update',
+    'as' => 'admin.category.update'
 ]);
 
 
