@@ -56,6 +56,9 @@ class CategoryController extends Controller
     public function show($id)
     {
         //
+        // $category = Category::find($id);
+        $articles = Category::find($id)->articles()->paginate(5);
+        return view('admin.category.show', compact('articles'));
 
     }
 
@@ -68,9 +71,11 @@ class CategoryController extends Controller
     public function edit($id)
     {
         //
-        $data['category'] = Category::find($id);
-        $data['status'] = '1';
-        return response()->json($data);
+        $categories = Category::all();
+        $category = Category::find($id);
+
+        return view('admin.category.index', compact('category', 'categories'));
+
     }
 
     /**

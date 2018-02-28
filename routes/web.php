@@ -100,4 +100,9 @@ Route::post('/admin/category/update/{id}', [
     'as' => 'admin.category.update'
 ]);
 
+Route::get('/admin/category/{id}', [
+    'uses' => 'CategoryController@show',
+    'as' => 'admin.category.show'
+]);
+
 

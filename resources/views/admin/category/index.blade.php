@@ -21,22 +21,42 @@
                 </div>
             </div>
             <div class="box-body">
-                <form action="{{route('admin.category.store')}}" method="post" >
+                @if(isset($category))
+                    <form action="{{route('admin.category.update', ['id'=> $category->id])}}" method="post" >
 
-                    {{csrf_field()}}
+                        {{csrf_field()}}
 
-                    <div class="form-group">
-                        <label for="name">Category Name</label>
-                        <input type="text" name="name" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <div class="pull-right">
-                            <button class="btn btn-success" type="submit">Create</button>
+                        <div class="form-group">
+                            <label for="name">Category Name</label>
+                        <input type="text" name="name" class="form-control" value="{{$category->name}}">
                         </div>
-                    </div>
 
-                </form>
+                        <div class="form-group">
+                            <div class="pull-right">
+                                <button class="btn btn-primary" type="submit">Update</button>
+                            </div>
+                        </div>
+
+                    </form>
+                @else
+                    <form action="{{route('admin.category.store')}}" method="post" >
+
+                        {{csrf_field()}}
+
+                        <div class="form-group">
+                            <label for="name">Category Name</label>
+                            <input type="text" name="name" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <div class="pull-right">
+                                <button class="btn btn-success" type="submit">Create</button>
+                            </div>
+                        </div>
+
+                    </form>
+                @endif
+
             </div>
             <!-- /.box-body -->
 
@@ -76,8 +96,8 @@
                 @foreach($categories as $category)
                     <tr>
                         <td>{{$category->id}}</td>
-                        <td>{{$category->name}}</td>
-                        <td><a href="javascript:void(0);" class="btn btn-primary btn-xs" onClick="editCategory({{$category->id}})">Edit</a></td>
+                    <td><a href="{{route('admin.category.show', ['id'=>$category->id] )}}">{{$category->name}}</a></td>
+                        <td><a  class="btn btn-primary btn-xs" href="{{route('admin.category.edit', ["id" => $category->id])}}">Edit</a></td>
                     <td><a href="{{route('admin.category.delete', ["id" => $category->id])}}" class="btn btn-danger btn-xs">Delete</a></td>
                     </tr>
 
@@ -103,33 +123,3 @@
 
 @endsection
 
-@section('extraScript')
-<script>
-    function editCategory(id) {
-        // console.log(id)
-        $.ajax({
-            type: 'GET',
-            url: '/admin/category/edit/'+id,
-            dataType: 'json',
-            success: function(data) {
-                console.log(data)
-                if (data.status == '1') {
-                    $('#categoryNameEdit').val(data.category.name)
-                    $('#categoryIdEdit').val(data.category.id)
-                    // var id = data.category.id
-                    // $("#updateCategoryForm").attr("action", "");
-
-                    $('#updateCategory').modal('toggle');
-                }
-            },
-            error: function(err) {
-                console.log(err)
-            }
-        });
-    }
-
-
-
-
-</script>
-@endsection

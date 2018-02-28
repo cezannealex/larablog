@@ -22,11 +22,4 @@ $factory->define(App\User::class, function (Faker $faker) {
     ];
 });
 
-$factory->define(App\Article::class, function (Faker $faker) {
-    return [
-        'title' => $faker->sentence(10),
-        'category_id' => App\Category::all()->random()->id,
-        'image' => 'default.png',
-        'content' => $faker->paragraph(random_int(5, 10))
-    ];
-});
+
