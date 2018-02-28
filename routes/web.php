@@ -11,11 +11,30 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+// Route::resource('/article', 'Client\ArticleController');
 // Route::get('/test', 'TestController@test');
+
+Route::get('/', [
+    'uses' => 'Client\HomeController@index',
+    'as' => 'client.home'
+]);
+
+Route::get('/article/{id}', [
+    'uses' => 'Client\ArticleController@show',
+    'as' => 'client.article.show'
+]);
+
+Route::get('/category', [
+    'uses' => 'Client\CategoryController@index',
+    'as' => 'client.category.index'
+]);
+
+Route::get('/category/{id}', [
+    'uses' => 'Client\CategoryController@show',
+    'as' => 'client.category.show'
+]);
+
+
 
 Route::get('/admin', function() {
     return view('admin.home');
@@ -83,7 +102,7 @@ Route::post('/admin/category/store', [
     'as'=> 'admin.category.store'
 ]);
 
-Route::resource('/test', 'TestController');
+// Route::resource('/test', 'TestController');
 
 Route::get('/admin/category/delete/{id}', [
     'uses' => 'CategoryController@destroy',
