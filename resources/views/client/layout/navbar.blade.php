@@ -26,8 +26,41 @@
                     </li>
 
                 </ul>
+
+
+
             </nav>
+
+
+
             <ul class="nav-add">
+                 <!-- Authentication Links -->
+                 <ul class="primary-menu-menu">
+                    @guest
+                        <li><a href="{{ route('login') }}">Login</a></li>
+                        <li><a href="{{ route('register') }}">Register</a></li>
+                    @else
+                        <li>
+                        <a href="{{route('admin.home')}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                        </li>
+
+                        <li>
+                            <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </li>
+
+                    @endguest
+                </ul>
                 <li class="search search_main" style="color: black; margin-top: 5px;">
                     <a href="#" class="js-open-search">
                         <i class="seoicon-loupe"></i>

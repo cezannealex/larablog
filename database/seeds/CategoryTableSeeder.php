@@ -18,6 +18,7 @@ class CategoryTableSeeder extends Seeder
         DB::table('categories')->insert([
             'name' => 'Entertainment'
         ]);
+
         DB::table('categories')->insert([
             'name' => 'Technology'
         ]);

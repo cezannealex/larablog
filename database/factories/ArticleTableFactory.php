@@ -7,6 +7,7 @@ $factory->define(App\Article::class, function (Faker $faker) {
         'title' => $faker->sentence(10),
         'category_id' => App\Category::all()->random()->id,
         'image' => 'default.png',
+        'author_id' => App\User::all()->random()->id,
         'content' => $faker->paragraph(random_int(5, 10))
     ];
 });

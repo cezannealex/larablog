@@ -6,6 +6,8 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+// use Illuminate\Http\Request;
+
 
 class RegisterController extends Controller
 {
@@ -27,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/admin';
 
     /**
      * Create a new controller instance.
@@ -54,17 +56,22 @@ class RegisterController extends Controller
         ]);
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
+
     protected function create(array $data)
     {
+
+        $image_new_name = 'default.png';
+
+        if (in_array('image', $data)) {
+            $image_name = $data['image']->getClientOriginalName();
+            $image_new_name = time().$image_name;
+            $data['image']->move('uploads/users/', $image_new_name);
+        }
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'image' => $image_new_name,
             'password' => bcrypt($data['password']),
         ]);
     }
