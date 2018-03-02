@@ -102,7 +102,7 @@ Route::post('/admin/category/store', [
     'as'=> 'admin.category.store'
 ]);
 
-// Route::resource('/test', 'TestController');
+Route::resource('/test', 'TestController');
 
 Route::get('/admin/category/delete/{id}', [
     'uses' => 'CategoryController@destroy',

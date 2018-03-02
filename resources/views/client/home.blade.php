@@ -120,7 +120,7 @@
                     <div class="row">
                         <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                             <div class="heading">
-                            <h4 class="h1 heading-title">{{$top_category->name}}</h4>
+                            <h4 class="h1 heading-title"><a href="{{route('client.category.show', ['id'=>$top_category->id])}}">{{$top_category->name}}</a></h4>
                                 <div class="heading-line">
                                     <span class="short-line"></span>
                                     <span class="long-line"></span>
