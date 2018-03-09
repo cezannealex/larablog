@@ -31,7 +31,7 @@
                                 Posted by
 
                                 <div class="post__author-name fn">
-                                    <a href="#" class="post__author-link">Admin</a>
+                                <a href="#" class="post__author-link">{{$article->user->name}}</a>
                                 </div>
 
                             </div>
@@ -97,17 +97,14 @@
                 <div class="blog-details-author">
 
                     <div class="blog-details-author-thumb">
-                        <img src="{{asset('client/img/blog-details-author.png')}}" alt="Author">
+                    <img src="/uploads/users/{{$article->user->image}}" alt="Author" style="width: 100px; height: 100px;">
                     </div>
 
                     <div class="blog-details-author-content">
                         <div class="author-info">
-                            <h5 class="author-name">Philip Demarco</h5>
-                            <p class="author-info">SEO Specialist</p>
+                            <h5 class="author-name">{{$article->user->name}}</h5>
                         </div>
-                        <p class="text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-                            nonummy nibh euismod.
-                        </p>
+
                         <div class="socials">
 
                             <a href="#" class="social__item">
@@ -131,21 +128,20 @@
                 </div>
 
                 <div class="pagination-arrow">
-
-                    <a href="#" class="btn-prev-wrap">
+                    @if($article->id > 1)
+                    <a href="{{route('client.article.show', ['id' => $article->id - 1])}}" class="btn-prev-wrap">
                         <svg class="btn-prev">
                             <use xlink:href="#arrow-left"></use>
                         </svg>
                         <div class="btn-content">
-                            <div class="btn-content-title">Next Post</div>
-                            <p class="btn-content-subtitle">Claritas Est Etiam Processus</p>
+                            <div class="btn-content-title">Previous</div>
                         </div>
                     </a>
+                    @endif
 
-                    <a href="#" class="btn-next-wrap">
+                <a href="{{route('client.article.show', ['id' => $article->id + 1])}}" class="btn-next-wrap">
                         <div class="btn-content">
-                            <div class="btn-content-title">Previous Post</div>
-                            <p class="btn-content-subtitle">Duis Autem Velius</p>
+                            <div class="btn-content-title">Next Post</div>
                         </div>
                         <svg class="btn-next">
                             <use xlink:href="#arrow-right"></use>

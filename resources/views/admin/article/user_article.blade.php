@@ -9,7 +9,7 @@
     <!-- Default box -->
     <div class="box">
       <div class="box-header with-border">
-        <h3 class="box-title">List All Articles</h3>
+        <h3 class="box-title">My Articles</h3>
 
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -22,7 +22,6 @@
           <thead>
             <th>Feature Image</th>
             <th>Title</th>
-            <th>Author</th>
             <th>Category</th>
             <th>Edit</th>
             <th>Delete</th>
@@ -33,13 +32,9 @@
               <tr>
                 <td><img src="/uploads/articles/{{$article->image}}" style="width: 200px"></td>
                 <td><a href="{{ route('admin.article.show', ['id' => $article->id]) }}">{{$article->title}}</a></td>
-                <td>{{$article->user->name}}</td>
                 <td>{{$article->category->name}}</td>
-
-                @if($article->user->id == Auth::user()->id)
                 <td><a href="{{ route('admin.article.edit', ['id' => $article->id]) }}" class="btn btn-xs btn-primary">Edit</a></td>
                 <td><a href="{{ route('admin.article.delete', ['id' => $article->id]) }}" class="btn btn-xs btn-danger">Delete</a></td>
-                @endif
               </tr>
             @endforeach
 

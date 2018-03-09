@@ -40,6 +40,12 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="user_id">Author:</label>
+                        <input type="text" hidden value="{{Auth::user()->id}}" id="user_id" name="user_id">
+                        {{Auth::user()->name}}
+                    </div>
+
+                    <div class="form-group">
                         <label for="content">Content</label>
                         <textarea name="content" id="content" cols="5" rows="5" class="form-control">
                         </textarea>

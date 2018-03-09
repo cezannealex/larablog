@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Article;
 use App\Category;
+use Auth;
 
 class ArticleController extends Controller
 {
@@ -16,9 +17,14 @@ class ArticleController extends Controller
     public function index()
     {
         //
-        $articles = Article::paginate(5);
+        $articles = Article::orderBy('created_at', 'desc')->paginate(5);
 
         return view('admin.article.index', compact('articles'));
+    }
+
+    public function userArticle(){
+        $articles = Auth::user()->articles()->orderBy('created_at', 'desc')->paginate(5);
+        return view('admin.article.user_article', compact('articles'));
     }
 
     /**
@@ -55,7 +61,8 @@ class ArticleController extends Controller
             'title' => $request->title,
             'content' => $request->content,
             'image' => $image_new_name,
-            'category_id' => $request->category_id
+            'category_id' => $request->category_id,
+            'user_id' => $request->user_id
         ]);
 
         return redirect()->route('admin.article.index');

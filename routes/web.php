@@ -57,6 +57,12 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'], function() {
         'uses' => 'ArticleController@index',
         'as' => 'admin.article.index'
     ]);
+
+    Route::get('/user/article', [
+        'uses' => 'ArticleController@userArticle',
+        'as' => 'admin.article.userArticle'
+    ]);
+
     Route::get('/article/create', [
         'uses' => 'ArticleController@create',
         'as' => 'admin.article.create'
